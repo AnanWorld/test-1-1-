@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A proposal for Daniel Elder, DLE Eco Surveys Ltd</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #1B6B6B;
+    --teal-dark: #0F4545;
+    --teal-tint: #E8F1F0;
+    --amber: #F5A623;
+    --amber-soft: #FDF4E3;
+    --ink: #1A1F1F;
+    --ink-soft: #4A5252;
+    --ink-mute: #6B7272;
+    --paper: #F7F3EC;
+    --paper-warm: #EFE8DB;
+    --line: #DDD3C2;
+    --white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink);
+    background: var(--paper);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .serif { font-family: 'Fraunces', serif; font-weight: 400; letter-spacing: -0.015em; }
+  .italic { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; }
+
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .wrap-narrow {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  @media (max-width: 720px) {
+    .wrap, .wrap-narrow { padding: 0 24px; }
+    body { font-size: 16px; }
+  }
+
+  /* ====== HERO ====== */
+  .hero {
+    min-height: 100vh;
+    padding: 80px 0 100px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--paper);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    right: -8%;
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, var(--teal-tint) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(20px);
+    opacity: 0.8;
+    z-index: 0;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 10%;
+    left: -5%;
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, var(--amber-soft) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(30px);
+    opacity: 0.6;
+    z-index: 0;
+  }
+  .hero-inner { position: relative; z-index: 2; width: 100%; }
+
+  .hero-label {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 500;
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-label span {
+    color: var(--ink-mute);
+    margin-left: 8px;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(44px, 7vw, 92px);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 1s 0.4s forwards;
+  }
+  .hero h1 .accent {
+    font-style: italic;
+    font-family: 'Instrument Serif', serif;
+    color: var(--teal);
+    font-weight: 400;
+  }
+
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+    opacity: 0;
+    animation: fadeUp 1s 0.8s forwards;
+  }
+  @media (max-width: 720px) {
+    .hero-meta { grid-template-columns: 1fr; gap: 20px; padding-top: 30px; margin-top: 40px; }
+  }
+  .hero-meta-item .k {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 8px;
+  }
+  .hero-meta-item .v {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    z-index: 3;
+    opacity: 0;
+    animation: fadeUp 1s 1.2s forwards;
+  }
+  .scroll-cue::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 36px;
+    background: var(--ink-mute);
+    margin: 14px auto 0;
+    animation: pulse 2s infinite;
+  }
+
+  /* ====== SECTIONS ====== */
+  section.s {
+    padding: 120px 0;
+    position: relative;
+  }
+  @media (max-width: 720px) {
+    section.s { padding: 80px 0; }
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 500;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-label::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--teal);
+  }
+
+  h2.section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(32px, 4.5vw, 56px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 36px;
+    color: var(--ink);
+  }
+  h2.section-title .it {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  p.lead {
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+  p.body {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+  }
+  p.body strong { color: var(--ink); font-weight: 600; }
+
+  /* ====== UNDERSTANDING SECTION ====== */
+  .understanding {
+    background: var(--paper);
+  }
+  .understanding-body {
+    max-width: 720px;
+  }
+  .quote-block {
+    margin: 60px 0;
+    padding: 40px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .quote-block .q {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: clamp(26px, 3.2vw, 36px);
+    line-height: 1.35;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .quote-block .q-attr {
+    margin-top: 20px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  /* ====== ABOUT / PROOF SECTION ====== */
+  .about {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .about .section-label { color: var(--amber); }
+  .about .section-label::before { background: var(--amber); }
+  .about h2.section-title { color: var(--paper); }
+  .about h2.section-title .it { color: var(--amber); }
+  .about p.lead { color: rgba(247, 243, 236, 0.8); }
+  .about p.body { color: rgba(247, 243, 236, 0.75); }
+  .about p.body strong { color: var(--paper); }
+
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 72px;
+  }
+  @media (max-width: 720px) {
+    .proof-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  }
+  .proof-card {
+    padding: 32px 20px;
+    background: rgba(247, 243, 236, 0.04);
+    border: 1px solid rgba(247, 243, 236, 0.12);
+    border-radius: 2px;
+    text-align: center;
+    transition: all 0.4s;
+  }
+  .proof-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-4px);
+    background: rgba(245, 166, 35, 0.08);
+  }
+  .proof-card .name {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--paper);
+    margin-bottom: 8px;
+  }
+  .proof-card .role {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(247, 243, 236, 0.55);
+  }
+
+  /* ====== MILESTONES ====== */
+  .milestones {
+    background: var(--paper);
+  }
+  .milestones-list {
+    margin-top: 72px;
+  }
+  .ms-item {
+    display: grid;
+    grid-template-columns: 1fr 2.2fr;
+    gap: 56px;
+    padding: 48px 0;
+    border-top: 1px solid var(--line);
+    align-items: start;
+    transition: all 0.4s;
+  }
+  .ms-item:last-child { border-bottom: 1px solid var(--line); }
+  .ms-item:hover { background: var(--paper-warm); margin: 0 -24px; padding: 48px 24px; }
+  @media (max-width: 720px) {
+    .ms-item { grid-template-columns: 1fr; gap: 16px; padding: 32px 0; }
+    .ms-item:hover { margin: 0; padding: 32px 0; background: transparent; }
+  }
+
+  .ms-left .tag {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .ms-left .num {
+    font-family: 'Fraunces', serif;
+    font-size: 42px;
+    line-height: 1;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .ms-left .timing {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-mute);
+  }
+
+  .ms-right .ms-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .ms-right .ms-desc {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+  }
+  .ms-right ul.items {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 24px;
+  }
+  @media (max-width: 720px) {
+    .ms-right ul.items { grid-template-columns: 1fr; }
+  }
+  .ms-right ul.items li {
+    font-size: 14px;
+    color: var(--ink-soft);
+    padding: 4px 0 4px 20px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .ms-right ul.items li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 12px;
+    width: 8px;
+    height: 1px;
+    background: var(--teal);
+  }
+
+  .pricing-note {
+    margin-top: 60px;
+    padding: 32px 40px;
+    background: var(--amber-soft);
+    border-left: 3px solid var(--amber);
+    border-radius: 2px;
+  }
+  .pricing-note .pn-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .pricing-note .pn-body {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  /* ====== IDEA SECTION ====== */
+  .idea {
+    background: var(--paper-warm);
+  }
+  .idea-frame {
+    background: var(--white);
+    padding: 72px 64px;
+    border-radius: 2px;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    border: 1px solid var(--line);
+  }
+  @media (max-width: 720px) {
+    .idea-frame { padding: 48px 32px; }
+  }
+  .idea-tag {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--teal);
+    color: var(--paper);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 2px;
+    margin-bottom: 32px;
+  }
+  .idea h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(28px, 3.5vw, 42px);
+    line-height: 1.2;
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .idea h3 .under {
+    border-bottom: 2px solid var(--amber);
+    padding-bottom: 2px;
+  }
+  .idea p.body { font-size: 18px; line-height: 1.7; }
+
+  .idea-pullquote {
+    margin: 40px 0;
+    padding: 24px 32px;
+    background: var(--teal-tint);
+    border-radius: 2px;
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.4;
+    color: var(--teal-dark);
+  }
+
+  /* ====== HOW I WORK ====== */
+  .how {
+    background: var(--paper);
+  }
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px 64px;
+    margin-top: 64px;
+  }
+  @media (max-width: 720px) {
+    .how-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+  .how-item .hn {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--amber);
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+  .how-item h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .how-item p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* ====== CLOSE ====== */
+  .close {
+    background: var(--teal);
+    color: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+  .close::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(245, 166, 35, 0.15) 0%, transparent 60%);
+    border-radius: 50%;
+  }
+  .close-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+  .close .section-label { color: var(--amber); justify-content: center; }
+  .close .section-label::before { background: var(--amber); }
+
+  .close h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(36px, 5.5vw, 68px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--paper);
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .close h2 .it {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--amber);
+  }
+  .close p {
+    font-size: 19px;
+    line-height: 1.6;
+    color: rgba(247, 243, 236, 0.85);
+    max-width: 600px;
+    margin: 0 auto 48px;
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 36px;
+    background: var(--amber);
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 2px;
+    transition: all 0.3s;
+    letter-spacing: 0.2px;
+  }
+  .btn:hover {
+    background: var(--paper);
+    transform: translateY(-2px);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--paper);
+    border: 1px solid rgba(247, 243, 236, 0.3);
+  }
+  .btn-ghost:hover {
+    background: rgba(247, 243, 236, 0.08);
+    color: var(--paper);
+    border-color: var(--paper);
+  }
+
+  .sign-off {
+    padding-top: 48px;
+    border-top: 1px solid rgba(247, 243, 236, 0.15);
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 24px;
+    color: var(--paper);
+  }
+  .sign-off .name {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    margin-top: 8px;
+  }
+
+  /* ====== ANIMATIONS ====== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+  }
+  .reveal.on {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* scroll progress */
+  .progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: var(--amber);
+    width: 0%;
+    z-index: 200;
+    transition: width 0.1s;
+  }
+
+  /* small element tweaks */
+  ::selection { background: var(--amber); color: var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-label">A Proposal <span>for DLE Eco Surveys Ltd</span></div>
+    <h1>
+      Daniel,<br>
+      I've read your brief<br>
+      <span class="accent">properly.</span>
+    </h1>
+    <p class="lead" style="max-width: 620px; opacity: 0; animation: fadeUp 1s 0.6s forwards;">
+      Most proposals you'll receive will skim it. This one is built around the specific business you're building. Take ten minutes.
+    </p>
+
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="k">From</div>
+        <div class="v">Anan</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="k">Scope</div>
+        <div class="v">Full build, all 4 milestones + website</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="k">Start</div>
+        <div class="v">Within 48 hours</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<!-- ===== UNDERSTANDING ===== -->
+<section class="s understanding">
+  <div class="wrap-narrow">
+    <div class="section-label reveal">What you're really asking for</div>
+    <h2 class="section-title reveal">
+      You don't need someone to<br>
+      <span class="it">"do social media".</span>
+    </h2>
+
+    <div class="understanding-body">
+      <p class="lead reveal">
+        You're a qualified surveyor with real credentials: BEng (Hons) Civil Engineering, DEA licensed with ECMK TrustMark, PAS 2035 Retrofit Assessor, 200+ ECO4 surveys. You're launching into a trust-driven market.
+      </p>
+      <p class="body reveal">
+        A landlord, letting agent, or facilities partner lands on your Google profile, website, or Instagram. In eight seconds they decide whether you're the real thing or another chancer. Everything in your brief (the booking system, the directories, the CRM, the ads) exists to make that first eight seconds work in your favour, and to convert the trust it earns into paid surveys without <strong>you being the bottleneck</strong>.
+      </p>
+      <p class="body reveal">
+        That's the actual job. Not "social media setup". <strong>Credibility infrastructure.</strong>
+      </p>
+    </div>
+
+    <div class="quote-block reveal">
+      <div class="q">
+        "I want to be able to direct a client to a professional website and booking page. I want to appear in Google when someone searches 'EPC Merseyside'. I want to send a review request in 30 seconds."
+      </div>
+      <div class="q-attr">Your brief, success criteria</div>
+    </div>
+
+    <p class="body reveal">
+      Every piece of what follows is mapped to that. Nothing extra, nothing missing.
+    </p>
+  </div>
+</section>
+
+<!-- ===== ABOUT / PROOF ===== -->
+<section class="s about">
+  <div class="wrap-narrow">
+    <div class="section-label reveal">Who I am</div>
+    <h2 class="section-title reveal">
+      Two years running growth at a B2B agency.<br>
+      <span class="it">This is the work I do every day.</span>
+    </h2>
+
+    <p class="lead reveal">
+      Cold outreach, website, decks, booking funnels, CRM, client comms, directory presence. The full cycle you're describing, delivered for real clients at a real agency. Not a freelancer flipping tutorials.
+    </p>
+    <p class="body reveal">
+      I've personally driven outreach and booked meetings with decision-makers at enterprises most freelancers would never get past the switchboard of. End-to-end enterprise sales cycles of four to six months. I know what professional, trust-first B2B looks like because I've had to earn that trust from strangers.
+    </p>
+    <p class="body reveal">
+      For your project, I work with a designer and video editor I've partnered with before. Your Canva templates, brand kit, and social visuals will be agency-quality. Not freelancer-average.
+    </p>
+
+    <div class="proof-grid">
+      <div class="proof-card reveal">
+        <div class="name">EY</div>
+        <div class="role">Director-level meeting</div>
+      </div>
+      <div class="proof-card reveal">
+        <div class="name">PwC</div>
+        <div class="role">Decision-maker booked</div>
+      </div>
+      <div class="proof-card reveal">
+        <div class="name">Myntra</div>
+        <div class="role">Customer Director</div>
+      </div>
+      <div class="proof-card reveal">
+        <div class="name">4-6 mo</div>
+        <div class="role">Enterprise cycles, end to end</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MILESTONES ===== -->
+<section class="s milestones">
+  <div class="wrap">
+    <div class="section-label reveal">How we get there</div>
+    <h2 class="section-title reveal" style="max-width: 800px;">
+      Four milestones over three weeks.<br>
+      <span class="it">You see progress every week.</span>
+    </h2>
+
+    <div class="milestones-list">
+
+      <div class="ms-item reveal">
+        <div class="ms-left">
+          <div class="tag">Milestone 01</div>
+          <div class="num">M1</div>
+          <div class="timing">Week one</div>
+        </div>
+        <div class="ms-right">
+          <div class="ms-title">Social presence & Google Business, live and polished</div>
+          <p class="ms-desc">
+            By the end of week one, a landlord googling "EPC Crosby" finds a verified Google Business Profile with photos, services, and a booking link. Your social channels look like a real business, not a draft.
+          </p>
+          <ul class="items">
+            <li>Facebook Business Page fully optimised</li>
+            <li>Instagram Business Account @dleecosurveys</li>
+            <li>LinkedIn Company Page for DLE Eco Surveys Ltd</li>
+            <li>WhatsApp Business with auto-replies</li>
+            <li>Google Business Profile, verified, fully populated</li>
+            <li>Google Review request system + template</li>
+            <li>Canva Pro brand kit with teal & amber loaded</li>
+            <li>10 branded social templates, editable</li>
+            <li>4-week content calendar template</li>
+            <li>Hashtag strategy for Merseyside audience</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ms-item reveal">
+        <div class="ms-left">
+          <div class="tag">Milestone 02</div>
+          <div class="num">M2</div>
+          <div class="timing">Week two</div>
+        </div>
+        <div class="ms-right">
+          <div class="ms-title">Booking, email automation, and CRM: the money layer</div>
+          <p class="ms-desc">
+            This is where interest becomes income. A visitor can book any of your 12 services, pay a deposit, get confirmed, and land in your pipeline, without you touching a keyboard.
+          </p>
+          <ul class="items">
+            <li>SimplyBook.me: all 12 services, live availability</li>
+            <li>Automatic confirmation + 24hr reminder emails</li>
+            <li>Online deposit/payment at point of booking</li>
+            <li>Booking integrated into site, socials, GBP</li>
+            <li>Mailchimp branded email template</li>
+            <li>3-email post-survey automation sequence</li>
+            <li>Monthly newsletter template, editable</li>
+            <li>"Landlord Damp Compliance" lead magnet page</li>
+            <li>HubSpot Free CRM with full pipeline</li>
+            <li>Automated follow-up reminders</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ms-item reveal">
+        <div class="ms-left">
+          <div class="tag">Milestone 03</div>
+          <div class="num">M3</div>
+          <div class="timing">Week two & three</div>
+        </div>
+        <div class="ms-right">
+          <div class="ms-title">Ads, SEO foundations, and citations across the UK</div>
+          <p class="ms-desc">
+            You appear in Google when someone searches "damp survey Liverpool". Your NAP (name, address, phone) is consistent across every directory that matters for UK local SEO. Ads are built, ready, and documented so you can run them yourself.
+          </p>
+          <ul class="items">
+            <li>Meta Business Manager + Pixel installed</li>
+            <li>Google Ads account linked to GBP</li>
+            <li>1 Meta campaign: landlords & letting agents, Merseyside</li>
+            <li>1 Google Search campaign: EPC, damp, Crosby, Merseyside</li>
+            <li>Retargeting audience configured</li>
+            <li>One-page ads monitoring guide</li>
+            <li>Google Search Console + sitemap submitted</li>
+            <li>Local keyword research document</li>
+            <li>LocalBusiness & Service schema on site</li>
+            <li>25+ UK directories: Yell, Bing, Apple Maps, Yelp, and more</li>
+            <li>Trustpilot, Checkatrade, TrustATrader profiles live</li>
+            <li>Online mention monitoring set up</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ms-item reveal">
+        <div class="ms-left">
+          <div class="tag">Milestone 04</div>
+          <div class="num">M4</div>
+          <div class="timing">End of week three</div>
+        </div>
+        <div class="ms-right">
+          <div class="ms-title">Handover so you're self-sufficient, not dependent</div>
+          <p class="ms-desc">
+            The promise in your brief: "I want to be self-sufficient after handover, not dependent on a developer for every small change." I'll make sure that's true.
+          </p>
+          <ul class="items">
+            <li>All credentials in a secure vault (Bitwarden)</li>
+            <li>Plain-English guide: the 5 things you'll do weekly</li>
+            <li>30-minute Loom walkthrough of every system</li>
+            <li>14 days of post-handover support for small tweaks</li>
+            <li>Ongoing maintenance checklist</li>
+            <li>Final review call if you want one</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ms-item reveal">
+        <div class="ms-left">
+          <div class="tag">Optional</div>
+          <div class="num">Site</div>
+          <div class="timing">Parallel with M2-M3</div>
+        </div>
+        <div class="ms-right">
+          <div class="ms-title">The website itself: 3 to 5 pages on Squarespace</div>
+          <p class="ms-desc">
+            Built on Squarespace specifically so you can manage it yourself going forward, as you requested. Home, Services (all 12, with prices), About (your credentials, TrustMark badge, your photo), Contact with Google Map, and the booking widget woven in throughout.
+          </p>
+          <ul class="items">
+            <li>3-5 pages on Squarespace, your brand</li>
+            <li>Homepage with trust signals front and centre</li>
+            <li>All 12+ services with descriptions and prices</li>
+            <li>About page: BEng, DEA, PAS 2035, TrustMark</li>
+            <li>Booking widget integrated throughout</li>
+            <li>Contact form + Google Maps embed</li>
+            <li>Mobile-optimised, fast-loading</li>
+            <li>GA4 + Search Console installed</li>
+            <li>Basic on-page SEO across every page</li>
+            <li>Two rounds of revisions included</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pricing-note reveal">
+      <div class="pn-label">On pricing</div>
+      <div class="pn-body">
+        I've deliberately left fixed prices off this page. Every milestone can scope up or down depending on what you actually need versus what's nice-to-have. <span class="italic">Let's talk through it.</span> I'll give you a written quote per milestone before we start anything, and we can trim or expand to fit your budget.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== IDEA ===== -->
+<section class="s idea">
+  <div class="wrap-narrow">
+    <div class="section-label reveal">The specific idea you didn't mention</div>
+
+    <div class="idea-frame reveal">
+      <span class="idea-tag">Regulatory tailwind</span>
+      <h3>
+        Your "Landlord Damp Compliance" lead magnet should be <span class="under">Awaab's Law-led</span>, not generic.
+      </h3>
+
+      <p class="body">
+        Awaab's Law came into force for social landlords on <strong>27 October 2025</strong>. The Renters' Rights Act is extending it to the <strong>private rented sector</strong>. Investigate damp and mould within 10 working days, make safe within 5. Landlords across England are scrambling for clarity right now.
+      </p>
+
+      <div class="idea-pullquote">
+        "The Merseyside Landlord's Damp Compliance Checklist: What Awaab's Law Means for Your Next Inspection."
+      </div>
+
+      <p class="body">
+        That's the lead magnet. A 6-page PDF, designed in your brand. Aimed at the exact person googling "what do I need to do about damp" right now. It will out-convert a generic guide three to five times. I'd pair it with a small Meta campaign targeting Merseyside landlords and letting agents. £5 to £10 a day is enough to test.
+      </p>
+
+      <p class="body">
+        Your PAS 2035 credential is not a bullet point on a services page. <strong>It's a distribution channel</strong>, if we position it right. That's the opportunity I'd want to build around in month one of us working together.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW I WORK ===== -->
+<section class="s how">
+  <div class="wrap-narrow">
+    <div class="section-label reveal">How I work</div>
+    <h2 class="section-title reveal">
+      No drama, no silence,<br>
+      <span class="it">no surprise scope creep.</span>
+    </h2>
+
+    <div class="how-grid">
+      <div class="how-item reveal">
+        <div class="hn">01</div>
+        <h4>Milestone-first delivery</h4>
+        <p>Progress shipped weekly. You see and approve each piece before the next starts. No wall-of-work at the end.</p>
+      </div>
+      <div class="how-item reveal">
+        <div class="hn">02</div>
+        <h4>Friday progress note</h4>
+        <p>Five lines every Friday. What's done, what's next, what I need from you. Upwork first, WhatsApp once we're working together.</p>
+      </div>
+      <div class="how-item reveal">
+        <div class="hn">03</div>
+        <h4>Revisions included</h4>
+        <p>Two rounds per design deliverable. Scope changes discussed and confirmed in writing before any cost is added.</p>
+      </div>
+      <div class="how-item reveal">
+        <div class="hn">04</div>
+        <h4>Deadlines kept or flagged early</h4>
+        <p>I don't go quiet. If something's blocking, you know on day one, not day seven. You'll never find out at the end.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLOSE ===== -->
+<section class="s close">
+  <div class="wrap-narrow close-inner">
+    <div class="section-label reveal">Let's start</div>
+    <h2 class="reveal">
+      If this reads like someone<br>
+      who actually understood your brief,<br>
+      <span class="it">let's talk.</span>
+    </h2>
+
+    <p class="reveal">
+      I can start Monday. Happy to shrink scope to M1 and M2 first if you'd rather test the working relationship before committing to the full build. Reply on Upwork and I'll send a short Loom back within 24 hours answering any questions.
+    </p>
+
+    <div class="cta-row reveal">
+      <a href="#" class="btn">Reply on Upwork →</a>
+      <a href="#" class="btn btn-ghost">Book a 20-minute call</a>
+    </div>
+
+    <div class="sign-off reveal">
+      Thank you for reading this far.
+      <span class="name">Anan</span>
+    </div>
+  </div>
+</section>
+
+<script>
+  // scroll progress bar
+  const progress = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    progress.style.width = scrolled + '%';
+  });
+
+  // scroll-triggered reveals
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('on');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
